@@ -5,9 +5,8 @@
   "main": "./dist-esmodule/index.js",
   "types": "./types/index.d.ts",
   "scripts": {
-    "clean": "rimraf -rf dist-umd dist-commonjs dist-esmodule types",
-    "build": "npm run clean && tsc && tsc -m es6 --outDir dist-esmodule && webpack && npx dts-bundle-generator --umd-module-name iiifredux -o types/index.d.ts dist-esmodule/index.d.ts && npm run build-docs",
-    "build-docs": "rimraf -rf docs && cp-cli dist-umd/iiifredux.js docs",
+    "clean": "rimraf -rf dist-umd dist-var dist-commonjs dist-esmodule types",
+    "build": "npm run clean && tsc && tsc -m es6 --outDir dist-esmodule && webpack && npx dts-bundle-generator --umd-module-name iiifredux -o types/index.d.ts dist-esmodule/index.d.ts",
     "prepare": "npm run build"
   },
   "repository": {
@@ -23,7 +22,6 @@
   "homepage": "https://github.com/IIIF-Commons/iiif-redux#readme",
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
-    "cp-cli": "^1.1.2",
     "dts-bundle-generator": "^2.0.0",
     "rimraf": "^2.6.3",
     "typescript": "^3.2.2",
