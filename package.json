@@ -1,6 +1,6 @@
 {
-  "name": "iiif-redux",
-  "version": "0.0.1",
+  "name": "@iiif/iiif-redux",
+  "version": "0.0.0-pre.1",
   "description": "Redux store for IIIF (in development)",
   "main": "./dist-esmodule/index.js",
   "types": "./types/index.d.ts",
