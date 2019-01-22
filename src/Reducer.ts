@@ -3,10 +3,10 @@ import { State } from "./State";
 
 type Reducer = (s: State, action: ActionTypes) => State;
 
-export const IIIFReducer: Reducer = (s: State, action: ActionTypes) => {
+export const IIIFReducer: Reducer = (state: State, action: ActionTypes) => {
     switch (action.type) {
         case TypeKeys.CHANGE_COLLECTION:
-            return { 
+            return {
                 collectionIndex: action.by,
                 manifestIndex: 0,
                 sequenceIndex: 0,
@@ -17,7 +17,7 @@ export const IIIFReducer: Reducer = (s: State, action: ActionTypes) => {
             };
         case TypeKeys.CHANGE_MANIFEST:
             return { 
-                collectionIndex: s.collectionIndex,
+                ...state,
                 manifestIndex: action.by,
                 sequenceIndex: 0,
                 canvasIndex: 0,
@@ -27,8 +27,7 @@ export const IIIFReducer: Reducer = (s: State, action: ActionTypes) => {
             };
         case TypeKeys.CHANGE_SEQUENCE:
             return { 
-                collectionIndex: s.collectionIndex,
-                manifestIndex: s.manifestIndex,
+                ...state,
                 sequenceIndex: action.by,
                 canvasIndex: 0,
                 rangeId: null,
@@ -37,9 +36,7 @@ export const IIIFReducer: Reducer = (s: State, action: ActionTypes) => {
             };
         case TypeKeys.CHANGE_CANVAS:
             return { 
-                collectionIndex: s.collectionIndex,
-                manifestIndex: s.manifestIndex,
-                sequenceIndex: s.sequenceIndex,
+                ...state,
                 canvasIndex: action.by,
                 rangeId: null,
                 xywh: null,
@@ -47,35 +44,22 @@ export const IIIFReducer: Reducer = (s: State, action: ActionTypes) => {
             };
         case TypeKeys.CHANGE_RANGE:
             return { 
-                collectionIndex: s.collectionIndex,
-                manifestIndex: s.manifestIndex,
-                sequenceIndex: s.sequenceIndex,
-                canvasIndex: s.canvasIndex,
+                ...state,
                 rangeId: action.by,
                 xywh: null,
                 rotation: null 
             };
         case TypeKeys.CHANGE_XYWH:
             return { 
-                collectionIndex: s.collectionIndex,
-                manifestIndex: s.manifestIndex,
-                sequenceIndex: s.sequenceIndex,
-                canvasIndex: s.canvasIndex,
-                rangeId: s.rangeId,
-                xywh: action.by,
-                rotation: s.rotation
+                ...state,
+                xywh: action.by
             };
         case TypeKeys.CHANGE_ROTATION:
             return { 
-                collectionIndex: s.collectionIndex,
-                manifestIndex: s.manifestIndex,
-                sequenceIndex: s.sequenceIndex,
-                canvasIndex: s.canvasIndex,
-                rangeId: s.rangeId,
-                xywh: s.xywh,
+                ...state,
                 rotation: action.by
             };
         default:
-            return s;
+            return state;
     }
 }
