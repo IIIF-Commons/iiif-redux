@@ -7,7 +7,8 @@
   "scripts": {
     "clean": "rimraf -rf dist-umd dist-var dist-commonjs dist-esmodule types",
     "build": "npm run clean && tsc && tsc -m es6 --outDir dist-esmodule && webpack && npx dts-bundle-generator --umd-module-name iiifredux -o types/index.d.ts dist-esmodule/index.d.ts",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "start": "npx serve ./docs"
   },
   "repository": {
     "type": "git",
